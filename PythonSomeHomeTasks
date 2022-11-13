@@ -1,0 +1,213 @@
+#Псс, только не переписывай дословно, измени стаил)
+print("Task17") 
+
+class bank(object):
+    def __init__(self):
+        self.clientBase=[]
+
+    def addClient(self,client):
+        self.clientBase.append(client)
+
+    def showByMoney(self, money):     
+        print("----Money")
+        for i in self.clientBase :
+           if(i.amountMoney>money):
+                print(i.name)       
+
+    def showByCode(self,Code):
+        print("----Code")
+        for i in self.clientBase :
+           if(i.code==Code):
+                print(i.name)
+             
+    def showByProc(self,proc):
+        print("----Proc")
+        for i in self.clientBase :
+           if(i.amountProc>proc):
+                print(i.name)
+
+class Client(object):
+    def __init__(self):
+        self.code=0
+        self.name=''
+        self.openDate=''
+        self.amountMoney=0
+        self.amountProc=0
+
+
+
+obj6=Client()
+obj6.code=1234
+obj6.name = "QWERTY"
+obj6.openData = "22.01.2007"
+obj6.amountMoney =10
+obj6.amountProc =15
+obj7=Client()
+obj7.code=2222
+obj7.name = "ASD"
+obj7.openData = "22.02.2017"
+obj7.amountMoney =100
+obj7.amountProc =150
+obj8=Client()
+obj8.code=3333
+obj8.name = "ZXC"
+obj8.openData = "22.03.2031"
+obj8.amountMoney =1000
+obj8.amountProc =151
+obj9=Client()
+obj9.code=4444
+obj9.name = "FGH"
+obj9.openData = "22.04.2010"
+obj9.amountMoney =10000
+obj9.amountProc =157
+
+Bank=bank()
+Bank.addClient(obj6)
+Bank.addClient(obj7)
+Bank.addClient(obj8)
+Bank.addClient(obj9)
+
+Bank.showByMoney(70)
+Bank.showByProc(150)
+
+Bank.showByCode(1234)
+
+
+
+import math
+
+print("Task2")
+class Treug(object): 
+    def __init__(self):
+        self.a=0.0
+        self.b=0.0
+    def PlusSomeProz(self,c,d,proz ):
+        if(c==True):
+            self.a = self.a/100*(proz+100)
+        if(d==True):
+            self.b = self.b/100*(proz+100)
+        return self.a,self.b
+    def RadiusOkr(self):
+        return (a*a+b*b)/2
+    def Perimetr(self):
+        return self.a+self.b + math.sqrt(self.a*self.a+self.b*self.b)
+    def Ugli(self):
+        return math.atan(self.a/self.b),math.atan(self.b/self.a)
+
+obj = Treug()
+obj.a=3
+obj.b=4
+c=True
+d=True
+e=100
+print( obj.PlusSomeProz(c,d,e) )
+e=-50
+print( obj.PlusSomeProz(c,d,e) )
+print(obj.Perimetr())
+print(obj.Ugli())
+
+
+
+print("Task13")
+class Wizard(object):
+    def __init__(self):
+        self.Name=''
+        self.Rating=0
+        self.Age=0
+        return    
+
+    def __str__(self):
+        return str('Wizard ' + self.Name + ' with ' + str(self.Rating) + ' rating looks ' + str(self.Age) + ' years old')
+
+    def __init__(self,name,rating,age):
+        self.Name=name
+        self.Rating=rating
+        self.Age=age
+        return   
+    
+
+    def ChangeRating(self,value):
+        if value>100 or value<1:
+            return
+        self.Age=self.Age-abs(value)//10
+        if(self.Age<18):
+            self.age=18
+        self.Rating=self.Rating+value
+        return
+
+    def __iadd__(self, other):
+        if other>100 or other<1:
+            print("Error404")
+            return self
+        self.Age=self.Age-abs(other)//10
+        if(self.Age<18):
+
+            self.age=18
+        self.Rating=self.Rating+other
+        print("Success plus raiting")
+        return self
+    def func(self, value):
+        return str((value-self.Age)*self.Rating)
+
+    def __lt__(self, other):
+        if self.Rating !=other.Rating:
+            return self.Rating<other.Rating
+        elif self.Age !=other.Age:
+            return self.Age<other.Age 
+        elif self.Name !=other.Name:
+            return self.Name<other.Name
+    def __gt__(self, other):
+        if self.Rating !=other.Rating:
+            return self.Rating>other.Rating
+        elif self.Age !=other.Age:
+            return self.Age>other.Age 
+        elif self.Name !=other.Name:
+            return self.Name>other.Name
+    def __le__(self, other):
+        if self.Rating !=other.Rating:
+            return self.Rating<=other.Rating
+        elif self.Age !=other.Age:
+            return self.Age<=other.Age 
+        elif self.Name !=other.Name:
+            return self.Name<=other.Name
+    def __ge__(self, other):
+        if self.Rating !=other.Rating:
+            return self.Rating>=other.Rating
+        elif self.Age !=other.Age:
+            return self.Age>=other.Age 
+        elif self.Name !=other.Name:
+            return self.Name>=other.Name
+    def __eq__(self, other):
+        if self.Rating !=other.Rating:
+            return self.Rating==other.Rating
+        elif self.Age !=other.Age:
+            return self.Age==other.Age 
+        elif self.Name !=other.Name:
+            return self.Name==other.Name
+    def __ne__(self, other):
+        if self.Rating !=other.Rating:
+            return self.Rating!=other.Rating
+        elif self.Age !=other.Age:
+            return self.Age!=other.Age 
+        elif self.Name !=other.Name:
+            return self.Name!=other.Name
+
+
+
+W1=Wizard("Antonio", 50, 24)
+print(W1)
+W1+=20
+print(W1)
+print(W1.func(75))
+print(W1)
+
+W2=Wizard("Romeo", 40, 45)
+print("\n")
+print(W2)
+print("\n")
+print(str(str(W1>W2)+"    >"))
+print(str(str(W1<W2)+"    <"))
+print(str(str(W1!=W2)+"    !="))
+print(str(str(W1==W2)+"    =="))
+print(str(str(W1>=W2)+"    >="))
+print(str(str(W1<=W2)+"    <="))
